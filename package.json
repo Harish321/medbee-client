@@ -1,11 +1,15 @@
 {
-  "name": "r",
+  "name": "react-jsonschema-form-demo",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "codemirror": "latest",
+    "js-yaml": "latest",
     "react": "next",
+    "react-codemirror2": "latest",
     "react-dom": "next",
-    "react-scripts": "2.1.3"
+    "react-jsonschema-form": "latest",
+    "react-scripts": "latest"
   },
   "scripts": {
     "start": "react-scripts start",
