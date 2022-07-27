@@ -416,7 +416,7 @@ class App extends Component {
 
     return (
       <div className="container-fluid">
-        <div className="page-header">
+        {/* <div className="page-header">
           <h1>react-jsonschema-form</h1>
           <div className="row">
             <div className="col-sm-8">
@@ -434,8 +434,8 @@ class App extends Component {
               <ThemeSelector theme={theme} select={this.onThemeSelected} />
             </div>
           </div>
-        </div>
-        <div className="col-sm-7">
+        </div> */}
+        {/* <div className="col-sm-7">
           <Editor
             title="formData"
             theme={editor}
@@ -454,7 +454,7 @@ class App extends Component {
             code={dump(uiSchema)}
             onChange={this.onUISchemaEdited}
           />
-        </div>
+        </div> */}
         <div className="col-sm-5">
           {this.state.form && (
             <Form
