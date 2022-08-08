@@ -10,7 +10,6 @@ import { shouldRender } from "./utils"
 import { samples } from "./pages"
 
 // Import a few CodeMirror themes; these are used to match alternative
-// bootstrap ones."
 
 const log = type => console.log.bind(console, type)
 
@@ -117,8 +116,13 @@ class App extends Component {
       transformErrors,
     } = this.state
 
+    const style = {
+      root: {
+        "marginLeft" : 100
+      }
+    }
     return (
-      <div className="container-fluid">
+      <div className="container-fluid" style={style.root}>
         <div className="col-sm-5">
           {this.state.form && (
             <Form
