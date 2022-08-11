@@ -1,13 +1,9 @@
 /*eslint semi: ["error", "never"]*/
 
 import React, { Component } from "react"
-import { UnControlled as CodeMirror } from "react-codemirror2"
-import { dump, safeLoad } from "js-yaml"
-
 import Form from "react-jsonschema-form"
-
 import { shouldRender } from "./utils"
-import { samples } from "./pages"
+import './App.css'
 
 // Import a few CodeMirror themes; these are used to match alternative
 
@@ -56,7 +52,7 @@ class App extends Component {
     // const { schema, uiSchema, formData, validate } = samples.RiskForm
     // const { schema, uiSchema, formData, validate } = samples.IndicatorForSurgicalForm
     // const { schema, uiSchema, formData, validate } = samples.MedicationSafetyForm
-    const { schema, uiSchema, formData, validate } = samples.VarianceSafteyForm
+    const { schema, uiSchema, formData, validate } = props.formData
 
     this.state = {
       form: false,
@@ -83,10 +79,7 @@ class App extends Component {
         alert("Unable to load form setup data.")
       }
     } else {
-      this.load(samples.RiskForm)
-      this.load(samples.IndicatorForSurgicalForm)
-      this.load(samples.MedicationSafetyForm)
-      this.load(samples.VarianceSafteyForm)
+      this.load(this.props.formData)
     }
   }
 

@@ -22,6 +22,21 @@
   color: #61dafb;
 }
 
+.form-group {
+  display: flex;
+  white-space: nowrap;
+  gap: 10px;
+}
+
+.form-group> label.control-label {
+  font-weight: 100;
+}
+.menuHeader{
+  background: #e9e3e3;
+  padding: 10px 5px 10px 10px;  
+  font-weight: bold;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
