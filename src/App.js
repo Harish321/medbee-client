@@ -53,7 +53,11 @@ class App extends Component {
   constructor(props) {
     super(props)
     // initialize state with Simple data sample
-    const { schema, uiSchema, formData, validate } = samples.RiskForm
+    // const { schema, uiSchema, formData, validate } = samples.RiskForm
+    // const { schema, uiSchema, formData, validate } = samples.IndicatorForSurgicalForm
+    // const { schema, uiSchema, formData, validate } = samples.MedicationSafetyForm
+    const { schema, uiSchema, formData, validate } = samples.VarianceSafteyForm
+
     this.state = {
       form: false,
       schema,
@@ -80,6 +84,9 @@ class App extends Component {
       }
     } else {
       this.load(samples.RiskForm)
+      this.load(samples.IndicatorForSurgicalForm)
+      this.load(samples.MedicationSafetyForm)
+      this.load(samples.VarianceSafteyForm)
     }
   }
 
