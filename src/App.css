@@ -36,6 +36,10 @@
   padding: 10px 5px 10px 10px;  
   font-weight: bold;
 }
+.css-r11z79-MuiDataGrid-root, .MuiTab-root,
+.css-levciy-MuiTablePagination-displayedRows{
+  font-size: initial !important;
+}
 
 @keyframes App-logo-spin {
   from {
