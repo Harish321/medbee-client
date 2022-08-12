@@ -1,6 +1,6 @@
 export default {
   schema: {
-    title: "INDICATORS FOR SURGICAL SERVICES",
+    title: "Indicatiors For Surgical Services",
     type: "object",
     properties: {
       "enteredBy": {
