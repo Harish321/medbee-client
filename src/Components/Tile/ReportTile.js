@@ -17,7 +17,11 @@ export default function ReportTile(props) {
     if(props.count >= RISK_THRESHOLD_RED){
         style.root = {
             ...style.root,
-            boxShadow: "red  1px 1px 10px 1px"
+            boxShadow: "#911010  1px 1px 10px 1px",
+            border: "1px solid #911010",
+            boxShadow: "#911010 1px 1px 10px 1px",
+            background: "#911010",
+            color: "white",
         }   
     } else if(props.count >= RISK_THRESHOLD_ORANGE){
         style.root = {

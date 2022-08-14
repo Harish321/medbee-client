@@ -41,6 +41,11 @@
   font-size: initial !important;
 }
 
+/* .navigation .MuiButtonBase-root{
+  padding: 5px !important;
+  justify-content: normal !important;
+} */
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

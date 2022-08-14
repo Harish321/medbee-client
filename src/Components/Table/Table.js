@@ -1,5 +1,4 @@
 import { DataGrid } from '@mui/x-data-grid';
-import Divider from '@mui/material/Divider'; 
 
 export default function(props){
     let style = {
