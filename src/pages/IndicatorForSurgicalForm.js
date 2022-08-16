@@ -2,6 +2,13 @@ export default {
   schema: {
     title: "Indicatiors For Surgical Services",
     type: "object",
+    required: [
+      "facility",
+      "eventNo",
+      "eventDate",
+      "eventType",
+      "locationOfEvent"
+    ],
     properties: {
       "enteredBy": {
         "type": "string",
@@ -13,7 +20,8 @@ export default {
       },
       "eventDate": {
         "type": "string",
-        "title": "Event Date"
+        "title": "Event Date",
+        "format": "date"
       },
       "eventNo": {
         "type": "string",
@@ -39,14 +47,41 @@ export default {
         "type": "string",
         "title": "Room"
       },
-      eventType: { type: 'string', title: 'Event Type' },
-      parameters: { type: 'string', title: 'Parameters' },
-      delayTime: { type: 'string', title: 'If delay, enter delay time in minutes' },
+      eventType: {
+        type: 'string', title: 'Event Type',
+        enum: [
+          "Equipment Issues",
+          "Inappropriate Behavior Communication",
+          "Incorrect Counts",
+          "Instrument Problems",
+          "Or Discharge Delay",
+          "Pre Op",
+          "Post Op",
+          "Registration",
+          "Specimen Error",
+          "Surgery Cancelled",
+          "Universal Protocol Not Followed"
+        ]
+      },
+      parameters: {
+        type: 'string', title: 'Parameters', enum: [
+          "Equipment Cpm Unavailable Instrument Problems Insulscan Failed",
+          "Equipment Malfunctioned Instrument Problems Had To Borrow",
+          "Equipment Missing Instrument Problems Broken",
+          "Equipment Not Available Instrument Problems Vendor",
+          "Equipment Pca Unavailable Instrument Problems Missing",
+          "Equipment Shortage Post Op Pyxis Stock Depleted",
+          "Equipment Thyroid Trays Unavailable Post Op No Notification Of Isolation Precautions"
+        ]
+      },
+      delayTime: { type: 'string', title: 'If delayed, enter delay time in minutes' },
       complications: { type: 'string', title: 'Unexcpected Outcomes/Complications' },
       comments: { type: 'string', title: 'Comments' }
     },
   },
   uiSchema: {
+    complications: { "ui:widget": "textarea" },
+    comments: { "ui:widget": "textarea" }
     // languages: {
     //   "ui:widget": "select",
     // },
@@ -76,5 +111,6 @@ export default {
     // },
   },
   formData: {
+    formType:"indicator"
   },
 };

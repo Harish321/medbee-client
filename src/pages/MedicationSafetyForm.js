@@ -2,6 +2,13 @@ export default {
   schema: {
     title: "Medication Saftey",
     type: "object",
+    required: [
+      "facility",
+      "eventNo",
+      "eventDate",
+      "eventType",
+      "processes"
+    ],
     properties: {
       "enteredBy": {
         "type": "string",
@@ -39,8 +46,50 @@ export default {
         "type": "string",
         "title": "Shift"
       },
-      processes: { type: 'string', title: 'processes' },
-      safteyProcesses: { type: 'string', title: 'saftey Processes' },
+      processes: {
+        type: 'string', title: 'processes', enum: [
+          "Prescribing",
+          "Interpretation Transcription",
+          "Dispensing",
+          "Administration",
+          "Controlled Substance",
+          "Med Admin Record Mar",
+          "Adverse Drug Reaction",
+          "Blood Blood Products",
+          "Extravesation",
+        ]
+      },
+      safteyProcesses: {
+        type: 'string', title: 'saftey Processes', enum: [
+          "2 Identifiers Not Used Failed To Transcribe Med",
+          "Allergy Omission Error Incorrect Entry Pharmacy",
+          "Armband Error Incorrect Entry Unit",
+          "Epidural Pump Failure Missed Medication",
+          "Improper Disposal Wastage Delay In Administration",
+          "Iv Pump Failure Dose Omitted",
+          "Look Alike Sound Alike Wrong Patient",
+          "Medication Cart Unlocked Wrong Dose",
+          "Medication Left At Bedside Wrong Drug",
+          "Medication Room Unlocked Wrong Frequency",
+          "Pca Pump Failure Wrong Route",
+          "Reconciliation Admission Wrong Time",
+          "Reconciliation Discharge Blood Infused Gt 2 Hrs",
+          "Reconciliation Transfer Possible Blood Reaction",
+          "Unlabeled Wrong Blood Component",
+          "Unsecured Mar Entry Not Verified",
+          "Controlled Substance Loss Not Scanned To Pharmacy",
+          "Count Discrepancy Strike Over On Mar",
+          "Pca Pump Programming Error Adverse Drug Reaction",
+          "Legibility Incorrectly Labeled",
+          "Telephone Verbal Order Incorrectly Prepared",
+          "Failed To Dc Med Per Order Incorrectly Prescribed",
+          "Blood Transfused Lt 4 Hrs Wrong Documentation",
+          "Iv Pump Mode Not Checked Iv Pump Guardrails Not Used",
+          "Iv Pump Incorrect Profile Used Iv Pump Programming Error",
+          "Delay In Dispensing",
+          "Profile Override"
+        ]
+      },
       signigicance: { type: 'string', title: 'signigicance' },
 
       "physNotified": {
@@ -51,10 +100,39 @@ export default {
         "type": "string",
         "title": "Notified Physician"
       },
-      errorDetectedTime: { type: 'string', title: 'When was Error Detected' },
-      drugRoute: { type: 'string', title: 'Drug Route' },
+      errorDetectedTime: {
+        type: 'string', title: 'When was Error Detected', enum: [
+          "Found 24 Hrs",
+          "Found During Audit",
+          "Found W In 24 Hr Check",
+          "Prior To Administration",
+          "Same Shift"
+        ]
+      },
+      drugRoute: {
+        type: 'string', title: 'Drug Route', enum: [
+          "Endotracheal",
+          "Intramuscular",
+          "Intraosseous",
+          "Intravenous",
+          "Orally",
+          "Subcutaneous",
+          "Sublingual",
+          "Topical",
+          "Transdermal"
+        ]
+      },
       listOfDrugs: { type: 'string', title: 'Please list name of Drug' },
-      actionTaken: { type: 'string', title: 'Immediate Action Taken' },
+      actionTaken: {
+        type: 'string', title: 'Immediate Action Taken', enum: [
+          "No Action Required",
+          "Airway Established Pt Ventilated",
+          "Antidote Administered",
+          "Cpr Administered",
+          "Drug Therapy Initiated Changed",
+          "Laboratory Tests Performed"
+        ]
+      },
       "employeeWitnesses": {
         "type": "string",
         "title": "Employee Witnesses"
@@ -74,6 +152,8 @@ export default {
     },
   },
   uiSchema: {
+    actionTaken: { "ui:widget": "textarea" },
+    comments: { "ui:widget": "textarea" }
     // languages: {
     //   "ui:widget": "select",
     // },
@@ -103,5 +183,6 @@ export default {
     // },
   },
   formData: {
+    formType:"medication"
   },
 };

@@ -1,50 +1,20 @@
 /*eslint semi: ["error", "never"]*/
 
+import axios from "axios"
 import React, { Component } from "react"
 import Form from "react-jsonschema-form"
 import './App.css'
-
+const baseurl = "http://localhost:3003/form/"
 // Import a few CodeMirror themes; these are used to match alternative
 
 const log = type => console.log.bind(console, type)
 
-class CopyLink extends Component {
-  onCopyClick = event => {
-    this.input.select()
-    document.execCommand("copy")
-  }
 
-  render() {
-    const { shareURL, onShare } = this.props
-    if (!shareURL) {
-      return (
-        <button className="btn btn-default" type="button" onClick={onShare}>
-          Share
-        </button>
-      )
-    }
-    return (
-      <div className="input-group">
-        <input
-          type="text"
-          ref={input => (this.input = input)}
-          className="form-control"
-          defaultValue={shareURL}
-        />
-        <span className="input-group-btn">
-          <button
-            className="btn btn-default"
-            type="button"
-            onClick={this.onCopyClick}>
-            <i className="glyphicon glyphicon-copy" />
-          </button>
-        </span>
-      </div>
-    )
-  }
-}
 function App(props){
-
+  async function submitForm(formData,schema){
+    await axios.post(baseurl+formData.formType,formData)
+    schema.readonly = true
+  }
   const style = {
           root: {
             "marginLeft" : 300
@@ -64,8 +34,8 @@ function App(props){
                   uiSchema={uiSchema}
                   formData={formData}
                   // onChange={this.onFormDataChange}
-                  onSubmit={({ formData }) =>
-                    console.log("submitted formData", formData)
+                  onSubmit={({ formData,schema }) =>
+                    submitForm(formData,schema) 
                   }
                   validate={validate}
                   onBlur={(id, value) =>
