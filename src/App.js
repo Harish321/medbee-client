@@ -5,7 +5,7 @@ import { Link, useNavigate } from "react-router-dom"
 import React, { Component, useState, useEffect } from "react"
 import Form from "react-jsonschema-form"
 import './App.css'
-const baseurl = "http://192.168.0.190:3003/form/"
+const baseurl = "http://15.207.7.212:3003/form/"
 // Import a few CodeMirror themes; these are used to match alternative
 
 const log = type => console.log.bind(console, type)

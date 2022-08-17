@@ -156,7 +156,6 @@ export default {
     },
   },
   uiSchema: {
-    actionTaken: { "ui:widget": "textarea" },
     comments: { "ui:widget": "textarea" }
     // languages: {
     //   "ui:widget": "select",
