@@ -154,7 +154,7 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
             >
                 <MenuIcon />
             </IconButton>
-            <Typography variant="h3" noWrap component="div">
+            <Typography variant="h4" noWrap component="div">
                 MEDBEE
             </Typography>
             </Toolbar>

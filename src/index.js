@@ -7,8 +7,10 @@ import Dashboard from './Dashboard/Dashboard'
 import * as serviceWorker from './serviceWorker';
 import PersistentDrawerLeft from './nav-bar/navigationBar'
 import { samples } from "./pages"
+import "./index.css"
 
 import { ThemeProvider, createTheme, makeStyles } from '@mui/material/styles';
+
 
 const theme = createTheme();
 
