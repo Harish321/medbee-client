@@ -41,6 +41,22 @@
   font-size: initial !important;
 }
 
+.success-message{
+  margin-left: 392px;
+  /* display: grid; */
+  margin-top: 200px;
+  /* align-items: center; */
+  /* justify-self: center; */
+  /* align-self: center; */
+  /* justify-content: center; */
+  font-size: 20px;
+  outline-color: green;
+  /* background: green; */
+  width: 534px;
+  /* box-shadow: -1px 5px 11px 1px; */
+  text-shadow: 0px 0px 1px #beffbe;
+}
+
 /* .navigation .MuiButtonBase-root{
   padding: 5px !important;
   justify-content: normal !important;

@@ -81,7 +81,7 @@ export default {
   },
   uiSchema: {
     complications: { "ui:widget": "textarea" },
-    comments: { "ui:widget": "textarea" }
+    comments: { "ui:widget": "textarea" },
     // languages: {
     //   "ui:widget": "select",
     // },
@@ -111,6 +111,6 @@ export default {
     // },
   },
   formData: {
-    formType:"Surgical"
+    formType: "Surgical"
   },
 };

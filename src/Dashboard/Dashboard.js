@@ -2,7 +2,7 @@ import Table from "../Components/Table/Table";
 import FullWidthTabs from "../Components/tabs/FullWidthTabs";
 import ReportTile from "../Components/Tile/ReportTile"
 import Axios from "axios"
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import DeleteIcon from '@mui/icons-material/Delete'
 import EditIcon from '@mui/icons-material/Edit'
 import DownloadIcon from '@mui/icons-material/Download'
@@ -63,8 +63,8 @@ export default function Dashboard(props){
             `Edit, Delete, Download`,
         },
       ];
-
-      Axios.get("http://15.207.7.212:3003/report/getAllForms").then((response) => {
+    useEffect(()=>{
+    Axios.get("http://15.207.7.212:3003/report/getAllForms").then((response) => {
         if(response.status == 200){
             const tempReportList = response.data.map((elem) => {
                 switch(elem.formType){
@@ -76,7 +76,9 @@ export default function Dashboard(props){
             })
             setReportList(tempReportList);
         }
-      })
+        })
+    },[props])
+     
       
     return (
         <div style={style.root}>

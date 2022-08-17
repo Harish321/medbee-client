@@ -3,7 +3,6 @@ export default {
         title: "Fall Safety",
         type: "object",
         required: [
-            "facility",
             "eventNo",
             "eventDate",
             "locationOfFall",
@@ -203,12 +202,16 @@ export default {
         },
     },
     uiSchema: {
+        enteredBy:{
+            "ui:field": "autoCompleter2"
+        },
         comments: {
             "ui:widget": "textarea"
         },
         postFallActionsTaken: {
             "ui:widget": "textarea"
         },
+        
         // languages: {
         //   "ui:widget": "select",
         // },

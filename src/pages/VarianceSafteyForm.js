@@ -112,7 +112,7 @@ export default {
                 "type": "string",
                 "title": "Physician Notified",
                 "enum": [
-                    "yes",
+                    "Yes",
                     "No"
                 ]
             },

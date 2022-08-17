@@ -95,7 +95,7 @@ export default {
       "physNotified": {
         "type": "string",
         "title": "Physician Notified",
-        "enum":[
+        "enum": [
           "Yes",
           "No"
         ]
@@ -156,7 +156,7 @@ export default {
     },
   },
   uiSchema: {
-    comments: { "ui:widget": "textarea" }
+    comments: { "ui:widget": "textarea" },
     // languages: {
     //   "ui:widget": "select",
     // },
@@ -186,6 +186,6 @@ export default {
     // },
   },
   formData: {
-    formType:"Medication"
+    formType: "Medication"
   },
 };
