@@ -6,7 +6,6 @@ export default {
       "facility",
       "eventNo",
       "eventDate",
-      "eventType",
       "processes"
     ],
     properties: {
@@ -28,7 +27,8 @@ export default {
       },
       "eventDate": {
         "type": "string",
-        "title": "Event Date"
+        "title": "Event Date",
+        "format": 'date'
       },
       "locationReportingMedError": {
         "type": "string",
@@ -47,7 +47,7 @@ export default {
         "title": "Shift"
       },
       processes: {
-        type: 'string', title: 'processes', enum: [
+        type: 'string', title: 'Processes', enum: [
           "Prescribing",
           "Interpretation Transcription",
           "Dispensing",
@@ -60,7 +60,7 @@ export default {
         ]
       },
       safteyProcesses: {
-        type: 'string', title: 'saftey Processes', enum: [
+        type: 'string', title: 'Saftey Processes', enum: [
           "2 Identifiers Not Used Failed To Transcribe Med",
           "Allergy Omission Error Incorrect Entry Pharmacy",
           "Armband Error Incorrect Entry Unit",
@@ -90,11 +90,15 @@ export default {
           "Profile Override"
         ]
       },
-      signigicance: { type: 'string', title: 'signigicance' },
+      signigicance: { type: 'string', title: 'Significance' },
 
       "physNotified": {
         "type": "string",
-        "title": "Physician Notified"
+        "title": "Physician Notified",
+        "enum":[
+          "Yes",
+          "No"
+        ]
       },
       "notifiedPhysician": {
         "type": "string",
@@ -183,6 +187,6 @@ export default {
     // },
   },
   formData: {
-    formType:"medication"
+    formType:"Medication"
   },
 };

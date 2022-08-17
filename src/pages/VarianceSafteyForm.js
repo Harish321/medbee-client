@@ -183,6 +183,6 @@ export default {
         // },
     },
     formData: {
-        formType:"variance"
+        formType:"Variance"
     },
 };

@@ -140,7 +140,7 @@ export default {
                 "type": "string",
                 "title": "Physician Notified",
                 "enum": [
-                    "yes",
+                    "Yes",
                     "No"
                 ]
             },
@@ -152,7 +152,7 @@ export default {
                 "type": "string",
                 "title": "New Order Received",
                 "enum": [
-                    "yes",
+                    "Yes",
                     "No"
                 ]
             },
@@ -203,9 +203,6 @@ export default {
         },
     },
     uiSchema: {
-        contributingFactors: {
-            "ui:widget": "textarea"
-        },
         comments: {
             "ui:widget": "textarea"
         },
@@ -241,6 +238,7 @@ export default {
         // },
     },
     formData: {
-        formType:"risk"
+        formType:"Risk"
     },
+    readonly:true
 };

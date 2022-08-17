@@ -111,6 +111,6 @@ export default {
     // },
   },
   formData: {
-    formType:"indicator"
+    formType:"Surgical"
   },
 };
