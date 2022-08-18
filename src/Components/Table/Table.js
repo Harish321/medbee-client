@@ -1,6 +1,19 @@
 import { DataGrid } from '@mui/x-data-grid';
+import { useEffect, useState } from 'react';
 
 export default function(props){
+    const [rowList, setRowList] = useState(props.rows?props.rows:[]);
+
+    const componentState = {
+        ...props,
+        rowList: rowList,
+        setRowList: setRowList
+    }
+    useEffect(() => {
+        if(props.action){
+            props.action(componentState, false)
+        }
+    },[])
     let style = {
         root: {
             height: 650, 
@@ -12,7 +25,7 @@ export default function(props){
      return (
         <div style={style.root}>
             <DataGrid
-                rows={props.rows}
+                rows={rowList}
                 columns={props.columns}
                 pageSize={props.pageSize}
                 rowsPerPageOptions={props.rowsPerPageOptions}

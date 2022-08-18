@@ -1,7 +1,7 @@
-import RiskForm from "./RiskForm";
-import MedicationSafetyForm from "./MedicationSafetyForm";
-import IndicatorForSurgicalForm from "./IndicatorForSurgicalForm";
-import VarianceSafteyForm from "./VarianceSafteyForm";
+import RiskForm from "./Risk/RiskForm";
+import MedicationSafetyForm from "./Medication/MedicationSafetyForm";
+import IndicatorForSurgicalForm from "./Surgical/IndicatorForSurgicalForm";
+import VarianceSafteyForm from "./Variance/VarianceSafteyForm";
 
 export const samples = {
  RiskForm,

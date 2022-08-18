@@ -1,15 +1,13 @@
 import Table from "../Components/Table/Table";
 import FullWidthTabs from "../Components/tabs/FullWidthTabs";
 import ReportTile from "../Components/Tile/ReportTile"
-import Axios from "axios"
 import { useEffect, useState } from "react";
 import DeleteIcon from '@mui/icons-material/Delete'
 import EditIcon from '@mui/icons-material/Edit'
 import DownloadIcon from '@mui/icons-material/Download'
+import { getIncidentReportData } from "./DashboardActions";
 
 export default function Dashboard(props){
-
-    const [reportList, setReportList] = useState([]);
 
     const style = {
         root: {
@@ -64,19 +62,7 @@ export default function Dashboard(props){
         },
       ];
     useEffect(()=>{
-    Axios.get("http://15.207.7.212:3003/report/getAllForms").then((response) => {
-        if(response.status == 200){
-            const tempReportList = response.data.map((elem) => {
-                switch(elem.formType){
-                    case "Risk": return {...elem, id: "RISK"+elem.id};
-                    case "Variance": return {...elem, id: "VAR"+elem.id};
-                    case "Medication": return {...elem, id: "MED"+elem.id};
-                    case "Surgical": return {...elem, id: "SUR"+elem.id};
-                }
-            })
-            setReportList(tempReportList);
-        }
-        })
+    
     },[props])
      
       
@@ -89,8 +75,8 @@ export default function Dashboard(props){
             </div>
             <div style={style.reporttable}>
                 <FullWidthTabs title={"Patient Reports"}>
-                    <Table 
-                        rows={reportList}
+                    <Table
+                        action={getIncidentReportData} 
                         columns={columns}
                         pageSize={10}
                         rowsPerPageOptions={[5]}/>

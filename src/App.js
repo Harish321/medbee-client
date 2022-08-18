@@ -1,18 +1,16 @@
 /*eslint semi: ["error", "never"]*/
 
 import axios from "axios"
-import { Link, useNavigate } from "react-router-dom"
-import React, { Component, useState, useEffect } from "react"
+import { useNavigate } from "react-router-dom"
+import React, { useState, useEffect } from "react"
 import Form from "react-jsonschema-form"
-import TextField from '@mui/material/TextField'
-import Autocomplete from '@mui/material/Autocomplete'
 import { useAutocomplete } from '@mui/base/AutocompleteUnstyled'
 import { styled } from '@mui/material/styles'
 import { autocompleteClasses } from '@mui/material/Autocomplete'
 
 
 import './App.css'
-const baseurl = "http://15.207.7.212:3003/form/"
+import { BASE_API_URI, FORM_API_URI } from "./Constants/Constants"
 // Import a few CodeMirror themes; these are used to match alternative
 
 const log = type => console.log.bind(console, type)
@@ -166,7 +164,7 @@ function App(props) {
   }, [props])
   async function submitForm(formData, schema) {
     formData.createdAt = new Date().toISOString()
-    await axios.post(baseurl + formData.formType, formData)
+    await axios.post(BASE_API_URI + FORM_API_URI + formData.formType, formData)
     setAlert(true)
     // Alert.Actions
     //     .show('Fall Incident Captured Successfully.')
