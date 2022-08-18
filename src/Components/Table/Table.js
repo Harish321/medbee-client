@@ -28,6 +28,7 @@ export default function(props){
                 rows={rowList}
                 columns={props.columns}
                 pageSize={props.pageSize}
+                onCellClick={props.onCellClick}
                 rowsPerPageOptions={props.rowsPerPageOptions}
             />
         </div>
