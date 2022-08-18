@@ -1,4 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
+import commonSlice from "./CommonStore";
 import medicationSafetySlice from "./MedicationSafetyStore";
 import riskSlice from "./RiskStore";
 import surgicalFormSlice from "./SurgicalFormStore";
@@ -9,7 +10,8 @@ const store = configureStore({
         riskStore: riskSlice.reducer,
         medicationSafetyStore: medicationSafetySlice.reducer,
         varianceSafetyStore: varianceSlice.reducer,
-        surgicalFormStore: surgicalFormSlice.reducer
+        surgicalFormStore: surgicalFormSlice.reducer,
+        commonStore: commonSlice.reducer
     }
 })
 
