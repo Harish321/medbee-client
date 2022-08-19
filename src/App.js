@@ -7,8 +7,8 @@ import Form from "react-jsonschema-form"
 import { useAutocomplete } from '@mui/base/AutocompleteUnstyled'
 import { styled } from '@mui/material/styles'
 import { autocompleteClasses } from '@mui/material/Autocomplete'
-
-
+import { useParams } from "react-router-dom"
+import store from './store'
 import './App.css'
 import { BASE_API_URI, FORM_API_URI } from "./Constants/Constants"
 // Import a few CodeMirror themes; these are used to match alternative
@@ -156,33 +156,43 @@ const fields = {
 function App(props) {
   const [alert, setAlert] = useState(false)
   const navigate = useNavigate()
-  useEffect(() => {
-    setAlert(false)
-    return () => {
-      console.log("cleaned up")
-    }
-  }, [props])
-  async function submitForm(formData, schema) {
-    formData.createdAt = new Date().toISOString()
-    await axios.post(BASE_API_URI + FORM_API_URI + formData.formType, formData)
-    setAlert(true)
-    // Alert.Actions
-    //     .show('Fall Incident Captured Successfully.')
-    //     .then(() => {
-    //         //after ok
-    //     })
-    //     .catch(() => {
-    //         //after cancel
-    //     })
-  }
+  const { id } = useParams()
+  const { schema, uiSchema, formData, validate, readonly } = props.formData
+  const [savedFormData, setSavedFormData] = useState({})
+
+  let commonStore = store.getState().commonStore
+  store.subscribe(function(){
+    commonStore = store.getState().commonStore
+  })
+
   const style = {
     root: {
       "marginLeft": 300,
       paddingBottom: "2px"
     }
   }
-  const { schema, uiSchema, formData, validate, readonly } = props.formData
-  // setAlert(false)
+  
+  useEffect(() => {
+    if(id){
+      setSavedFormData(commonStore.allIncidentList.find((incident) => 
+        formData.formType == incident.formType && id == incident.id.substr(3,incident.id.length)
+      ))
+    }
+  }, [])
+
+  useEffect(() => {
+    setAlert(false)
+    return () => {
+      console.log("cleaned up")
+    }
+  }, [props])
+  
+  async function submitForm(formData, schema) {
+    formData.createdAt = new Date().toISOString()
+    await axios.post(BASE_API_URI + FORM_API_URI + formData.formType, formData)
+    setAlert(true)
+  }
+  
   return (
     <div className="container-fluid" style={style.root}>
       {alert && <div className="success-message">
@@ -191,19 +201,14 @@ function App(props) {
       {!alert && <div style={{width:"50%"}}>
         {(
           <Form
-            // ArrayFieldTemplate={ArrayFieldTemplate}
-            // ObjectFieldTemplate={ObjectFieldTemplate}
-            // liveValidate={liveSettings.validate}
-            // disabled={readonly}
             schema={schema}
             uiSchema={uiSchema}
-            formData={formData}
+            formData={{...formData, ...savedFormData}}
             fields={fields}
             onSubmit={({ formData, schema }) =>
               submitForm(formData, schema)
             }
             validate={validate}
-            // transformErrors={transformErrors}
             onError={log("errors")}>
             <div className="row pull-right" style={{marginRight:"120px"}}>
               <div className="col-sm-3">
@@ -211,12 +216,6 @@ function App(props) {
                   Submit
                 </button>
               </div>
-              {/* <div className="col-sm-9 text-right">
-                      <CopyLink
-                        shareURL={this.state.shareURL}
-                        onShare={this.onShare}
-                      />
-                    </div> */}
             </div>
           </Form>
         )}

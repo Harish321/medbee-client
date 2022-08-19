@@ -1,13 +1,23 @@
 import Table from "../Components/Table/Table";
 import FullWidthTabs from "../Components/tabs/FullWidthTabs";
 import ReportTile from "../Components/Tile/ReportTile"
-import DeleteIcon from '@mui/icons-material/Delete'
-import EditIcon from '@mui/icons-material/Edit'
-import DownloadIcon from '@mui/icons-material/Download'
-import { getIncidentReportData } from "./DashboardActions";
+import { getIncidentReportData, navigateToEditIncidentScreen } from "./DashboardActions";
+import ActionIcon from "../Components/ActionIcon";
+import { INCIDENT_TABLE_ACTION_ICONS, INCIDNT_TABLE_COLUMNS } from "./DashboardConstants";
+import { EDIT_TEXT, DELETE_TEXT, DOWNLOAD_TEXT } from "./DashboardConstants";
+import { useNavigate } from "react-router-dom";
 
 export default function Dashboard(props){
+    let navigate = useNavigate();
 
+    const handleIncidentActionCellClick = (params, event, details) => {
+        switch(event.target.innerText){
+            case EDIT_TEXT: navigateToEditIncidentScreen(params, navigate); break;
+            case DELETE_TEXT: navigateToEditIncidentScreen(params, event, details); break;
+            case DOWNLOAD_TEXT: navigateToEditIncidentScreen(params, event, details); break;
+        }
+    }
+    
     const style = {
         root: {
             "marginLeft": 100
@@ -41,46 +51,7 @@ export default function Dashboard(props){
             lastReported: "2022-07-12 12:00:00 AM"
         }
     ]
-    const columns = [
-        { field: 'id', headerName: 'ID', width: 70 },
-        { field: 'formType', headerName: 'Report Type', width: 170 },
-        { field: 'enteredBy', headerName: 'Entered By', width: 170 },
-        { field: 'facility', headerName: 'Facility', width: 170 },
-        { field: 'departmentsInvolved', headerName: 'Departments Involved', width: 170 },
-        { field: 'status', headerName: 'Status', width: 170 },
-        { field: 'eventDate', headerName: 'Submitted Date', width: 170 },
-        { field: 'LastSubmittedDate', headerName: 'Last Updated Date', width: 170 },
-        {
-          field: 'Edit',
-          headerName: '',
-          description: 'This column has a value getter and is not sortable.',
-          sortable: false,
-          width: 30,
-          valueGetter: (params) =>
-            'Edit',
-        },
-        {
-            field: 'Delete',
-            headerName: '',
-            description: 'This column has a value getter and is not sortable.',
-            sortable: false,
-            width: 30,
-            valueGetter: (params) =>
-              'Delete',
-          },
-          {
-            field: 'Download',
-            headerName: '',
-            description: 'This column has a value getter and is not sortable.',
-            sortable: false,
-            width: 60,
-            valueGetter: (params) =>
-              'Download',
-          },
-      ];
-      function handleCellClick(params, event, details){
-        console.log("cicked")
-      }
+    
     return (
         <div style={style.root}>
             <div style={style.reportAggregate}>
@@ -89,13 +60,27 @@ export default function Dashboard(props){
                 })}
             </div>
             <div style={style.reporttable}>
-                <FullWidthTabs title={"Patient Reports"}>
+                <FullWidthTabs title={"Incident Reports"}>
                     <Table
                         action={getIncidentReportData} 
-                        columns={columns}
+                        columns={[...INCIDNT_TABLE_COLUMNS, {
+                            field: 'actions',
+                            headerName: '',
+                            description: 'This column has a value getter and is not sortable.',
+                            sortable: false,
+                            width: 170,
+                            renderCell: () => {
+                              return (
+                                <div>
+                                  {INCIDENT_TABLE_ACTION_ICONS.map((iconProps) => 
+                                        <ActionIcon {...iconProps}></ActionIcon>  
+                                  )}
+                                </div>
+                            )},
+                          }]}
                         pageSize={10}
                         rowsPerPageOptions={[5]}
-                        onCellClick={handleCellClick}/>
+                        onCellClick={handleIncidentActionCellClick}/>
                 </FullWidthTabs>
             </div>
         </div>

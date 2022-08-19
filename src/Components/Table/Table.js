@@ -9,11 +9,13 @@ export default function(props){
         rowList: rowList,
         setRowList: setRowList
     }
+
     useEffect(() => {
         if(props.action){
             props.action(componentState, false)
         }
     },[])
+
     let style = {
         root: {
             height: 650, 
@@ -28,8 +30,8 @@ export default function(props){
                 rows={rowList}
                 columns={props.columns}
                 pageSize={props.pageSize}
-                onCellClick={props.onCellClick}
                 rowsPerPageOptions={props.rowsPerPageOptions}
+                onCellClick={props.onCellClick}
             />
         </div>
      )

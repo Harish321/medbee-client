@@ -12,6 +12,7 @@ import { samples } from "./pages"
 import "./index.css"
 
 import { ThemeProvider, createTheme, makeStyles } from '@mui/material/styles';
+import { DASHBOARD_PAGE_URI, MEDICATION_PAGE_URI, RISK_FORM_TYPE, RISK_PAGE_URI, SURGICAL_PAGE_URI, VARIANCE_PAGE_URI } from './Constants/Constants';
 
 
 const theme = createTheme();
@@ -26,11 +27,15 @@ root.render(
             <BrowserRouter>
                 <PersistentDrawerLeft/>
                 <Routes>
-                    <Route path="/dashboard" element={<Dashboard />}/>
-                    <Route path="/varianceSafety" element={<App formData={samples.VarianceSafteyForm}/>} />
-                    <Route path="/risk" element={<App formData={samples.RiskForm}/>} />
-                    <Route path="/surgical" element={<App formData={samples.IndicatorForSurgicalForm}/>} />
-                    <Route path="/medicationSafety" element={<App formData={samples.MedicationSafetyForm}/>} />
+                    <Route path={DASHBOARD_PAGE_URI} element={<Dashboard />}/>
+                    <Route path={VARIANCE_PAGE_URI+"/:id"} element={<App formData={samples.VarianceSafteyForm}/>} />
+                    <Route path={RISK_PAGE_URI+"/:id"} element={<App formData={samples.RiskForm}/>} />
+                    <Route path={SURGICAL_PAGE_URI+"/:id"} element={<App formData={samples.IndicatorForSurgicalForm}/>} />
+                    <Route path={MEDICATION_PAGE_URI+"/:id"} element={<App formData={samples.MedicationSafetyForm}/>} />
+                    <Route path={VARIANCE_PAGE_URI} element={<App formData={samples.VarianceSafteyForm}/>} />
+                    <Route path={RISK_PAGE_URI} element={<App formData={samples.RiskForm}/>} />
+                    <Route path={SURGICAL_PAGE_URI} element={<App formData={samples.IndicatorForSurgicalForm}/>} />
+                    <Route path={MEDICATION_PAGE_URI} element={<App formData={samples.MedicationSafetyForm}/>} />
                 </Routes>
             </BrowserRouter>
         </Provider>
