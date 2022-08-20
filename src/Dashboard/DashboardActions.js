@@ -36,3 +36,15 @@ export const navigateToEditIncidentScreen = (params, navigate) => {
         }
     }
 }
+
+export const deleteRecord = (params, event) => {
+    if(params){
+        console.log(params.row.id+" Record deleted")
+    }
+}
+
+export const downloadRecord = (params, event) => {
+    if(params){
+        console.log(params.row.id+" Record downloaded")
+    }
+}
