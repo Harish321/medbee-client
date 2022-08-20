@@ -1,7 +1,7 @@
 import Table from "../Components/Table/Table";
 import FullWidthTabs from "../Components/tabs/FullWidthTabs";
 import ReportTile from "../Components/Tile/ReportTile"
-import { deleteIncident, getIncidentReportData, navigateToEditIncidentScreen } from "./DashboardActions";
+import { getIncidentReportData, navigateToEditIncidentScreen } from "./DashboardActions";
 import ActionIcon from "../Components/ActionIcon";
 import { INCIDENT_TABLE_ACTION_ICONS, INCIDNT_TABLE_COLUMNS } from "./DashboardConstants";
 import { EDIT_TEXT, DELETE_TEXT, DOWNLOAD_TEXT } from "./DashboardConstants";
@@ -12,7 +12,7 @@ export default function Dashboard(props){
     const handleIncidentActionCellClick = (params, event, details) => {
         switch(event.target.innerText){
             case EDIT_TEXT: navigateToEditIncidentScreen(params, navigate); break;
-            case DELETE_TEXT: {deleteIncident(params,navigate)}; break;
+            case DELETE_TEXT: navigateToEditIncidentScreen(params, event, details); break;
             case DOWNLOAD_TEXT: navigateToEditIncidentScreen(params, event, details); break;
         }
     }

@@ -36,8 +36,3 @@ export const navigateToEditIncidentScreen = (params, navigate) => {
         }
     }
 }
-export const deleteIncident = (params,navigate) =>{
-    Axios.delete(BASE_API_URI+`form/${params.row.formType}/${params.row.id}`).then(()=>{
-        navigate(DASHBOARD_PAGE_URI);
-    })
-}
