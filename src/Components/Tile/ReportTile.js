@@ -3,11 +3,12 @@ import { RISK_THRESHOLD_ORANGE, RISK_THRESHOLD_RED, RISK_THRESHOLD_YELLOW } from
 export default function ReportTile(props) {
     let style = {
         root: {
-            minWidth: 375,
+            width: 277,
             border: "1px solid #cccccc",
             borderRadius: 10,
             boxShadow: "green 1px 1px 10px 1px",
-            padding: 10,
+            padding: "10px 15px",
+            fontSize: 13
         }
     }
     style = {

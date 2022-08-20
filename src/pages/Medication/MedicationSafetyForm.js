@@ -156,34 +156,72 @@ export default {
     },
   },
   uiSchema: {
-    comments: { "ui:widget": "textarea" },
-    // languages: {
-    //   "ui:widget": "select",
-    // },
-    // firstName: {
-    //   "ui:autofocus": true,
-    //   "ui:emptyValue": "",
-    // },
-    // age: {
-    //   "ui:widget": "updown",
-    //   "ui:title": "Age of person",
-    //   "ui:description": "(earthian year)",
-    // },
-    // bio: {
-    //   "ui:widget": "textarea",
-    // },
-    // password: {
-    //   "ui:widget": "password",
-    //   "ui:help": "Hint: Make it strong!",
-    // },
-    // date: {
-    //   "ui:widget": "alt-datetime",
-    // },
-    // telephone: {
-    //   "ui:options": {
-    //     inputType: "tel",
-    //   },
-    // },
+    comments: { 
+      "ui:widget": "textarea", 
+      "ui:placeholder": "Comments"
+    },
+    "enteredBy": {
+      "ui:placeholder": "Entered by"
+    },
+    "facility": {
+      "ui:placeholder": "Facility"
+    },
+    "departmentsInvolved": {
+      "ui:placeholder": "Departments involved"
+    },
+    "eventNo": {
+      "ui:placeholder": "Event number"
+    },
+    "eventDate": {
+    },
+    "locationReportingMedError": {
+      "ui:placeholder": "Location reporting error"
+    },
+    "time": {
+      "ui:placeholder": "Time"
+    },
+    "room": {
+      "ui:placeholder": "Room"
+    },
+    "shift": {
+      "ui:placeholder": "Shift"
+    },
+    processes: {
+      "ui:placeholder": "Choose an option"
+    },
+    safteyProcesses: {
+      "ui:placeholder": "Choose an option"
+    },
+    signigicance: { 
+      "ui:placeholder": "Significance"
+    },
+    "physNotified": {
+      "ui:placeholder": "Choose an option"
+    },
+    "notifiedPhysician": {
+      "ui:placeholder": "Physician name"
+    },
+    errorDetectedTime: {
+      "ui:placeholder": "Choose an option"
+    },
+    drugRoute: {
+      "ui:placeholder": "Choose an option"
+    },
+    listOfDrugs: { 
+      "ui:placeholder": "List of drugs"
+    },
+    actionTaken: {
+      "ui:placeholder": "Choose an option"
+    },
+    "employeeWitnesses": {
+      "ui:placeholder": "Employee witness"
+    },
+    "physicianWitnesses": {
+      "ui:placeholder": "Physician witness"
+    },
+    "otherWitnesses": {
+      "ui:placeholder": "Other witness"
+    }
   },
   formData: {
     formType: "Medication"

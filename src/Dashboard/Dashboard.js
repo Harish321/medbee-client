@@ -20,11 +20,13 @@ export default function Dashboard(props){
     
     const style = {
         root: {
-            "marginLeft": 100
+            margin: "0 50px 0 100px"
         },
         reportAggregate: {
-            "display": "flex",
-            "gap": 10
+            display: "flex",
+            gap: 20,
+            width: "100%",
+            flexWrap: "wrap",
         },
         reporttable: {}
     }

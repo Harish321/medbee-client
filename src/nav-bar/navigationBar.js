@@ -138,7 +138,7 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
     };
   
     return (
-        <Box sx={{ display: 'flex' }}>
+        <Box sx={{ display: 'flex', fontSize: 13 }}>
         <CssBaseline />
         <AppBar position="fixed" open={open}>
             <Toolbar>

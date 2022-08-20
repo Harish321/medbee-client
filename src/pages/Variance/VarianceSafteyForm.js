@@ -151,36 +151,87 @@ export default {
         },
     },
     uiSchema: {
-        comments: {
-            "ui:widget": "textarea"
+        comments: { 
+            "ui:widget": "textarea", 
+            "ui:placeholder": "Comments"
+          },
+          "enteredBy": {
+            "ui:placeholder": "Entered by"
+          },
+          "facility": {
+            "ui:placeholder": "Facility"
+          },
+          "departmentsInvolved": {
+            "ui:placeholder": "Departments involved"
+          },
+          "departmentReportingVariance": {
+            "ui:placeholder": "Departments reporting variane"
         },
-        // languages: {
-        //   "ui:widget": "select",
-        // },
-        // firstName: {
-        //   "ui:autofocus": true,
-        //   "ui:emptyValue": "",
-        // },
-        // age: {
-        //   "ui:widget": "updown",
-        //   "ui:title": "Age of person",
-        //   "ui:description": "(earthian year)",
-        // },
-        // bio: {
-        //   "ui:widget": "textarea",
-        // },
-        // password: {
-        //   "ui:widget": "password",
-        //   "ui:help": "Hint: Make it strong!",
-        // },
-        // date: {
-        //   "ui:widget": "alt-datetime",
-        // },
-        // telephone: {
-        //   "ui:options": {
-        //     inputType: "tel",
-        //   },
-        // },
+          "eventNo": {
+            "ui:placeholder": "Event number"
+          },
+          "eventType": {
+            "ui:placeholder": "Choose an option"
+          },
+          "eventParameters": {
+            "ui:placeholder": "Choose an option"
+          },
+          "eventDate": {
+          },
+          "locationReportingMedError": {
+            "ui:placeholder": "Location reporting error"
+          },
+          locationOfEvent:{
+            "ui:placeholder": "Location"
+          },
+          "time": {
+            "ui:placeholder": "Time"
+          },
+          "room": {
+            "ui:placeholder": "Room"
+          },
+          "shift": {
+            "ui:placeholder": "Shift"
+          },
+          processes: {
+            "ui:placeholder": "Choose an option"
+          },
+          safteyProcesses: {
+            "ui:placeholder": "Choose an option"
+          },
+          signigicance: { 
+            "ui:placeholder": "Significance"
+          },
+          "physNotified": {
+            "ui:placeholder": "Choose an option"
+          },
+          "notifiedPhysician": {
+            "ui:placeholder": "Physician name"
+          },
+          "notifiedPerson": {
+          "ui:placeholder":"Relationship with patient"
+            },
+          errorDetectedTime: {
+            "ui:placeholder": "Choose an option"
+          },
+          drugRoute: {
+            "ui:placeholder": "Choose an option"
+          },
+          listOfDrugs: { 
+            "ui:placeholder": "List of drugs"
+          },
+          actionTaken: {
+            "ui:placeholder": "Choose an option"
+          },
+          "employeeWitnesses": {
+            "ui:placeholder": "Employee witness"
+          },
+          "physicianWitnesses": {
+            "ui:placeholder": "Physician witness"
+          },
+          "otherWitnesses": {
+            "ui:placeholder": "Other witness"
+          }
     },
     formData: {
         formType:"Variance"

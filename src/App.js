@@ -156,7 +156,7 @@ const fields = {
 function App(props) {
   const [alert, setAlert] = useState(false)
   const navigate = useNavigate()
-  const { id } = useParams()
+  let { id } = useParams()
   const { schema, uiSchema, formData, validate, readonly } = props.formData
   const [savedFormData, setSavedFormData] = useState({})
 
@@ -167,22 +167,28 @@ function App(props) {
 
   const style = {
     root: {
-      "marginLeft": 300,
       paddingBottom: "2px"
     }
   }
   
+  // useEffect(() => {
+  //   if(id){
+  //     setSavedFormData(commonStore.allIncidentList.find((incident) => 
+  //       formData.formType == incident.formType && id == incident.id.substr(3,incident.id.length)
+  //     ))
+  //   }
+  // }, [])
+
   useEffect(() => {
     if(id){
       setSavedFormData(commonStore.allIncidentList.find((incident) => 
         formData.formType == incident.formType && id == incident.id.substr(3,incident.id.length)
       ))
     }
-  }, [])
-
-  useEffect(() => {
     setAlert(false)
     return () => {
+      id = null
+      setSavedFormData({})
       console.log("cleaned up")
     }
   }, [props])
@@ -198,7 +204,7 @@ function App(props) {
       {alert && <div className="success-message">
         Successfully reported the incident, please visit Dashboard.
       </div>}
-      {!alert && <div style={{width:"50%"}}>
+      {!alert && <div>
         {(
           <Form
             schema={schema}

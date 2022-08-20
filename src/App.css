@@ -25,15 +25,22 @@ html{
 .App-link {
   color: #61dafb;
 }
-
-.form-group {
-  display: flex;
-  white-space: nowrap;
-  gap: 10px;
+form.rjsf fieldset#root {
+  column-width: 300px;
+  width: 650px;
+  margin-left: 120px;
+  column-gap: 12px;
+  column-count: 2;
 }
-
+.form-group {
+  display: inline-block;
+}
+form.rjsf fieldset#root .form-control{
+  width: 300px;
+}
 .form-group> label.control-label {
-  font-weight: 100;
+  font-size: 12px;
+  color: #4a4949;
 }
 .form-group> label.control-label > span.required {
   color: red;
@@ -45,7 +52,7 @@ html{
 }
 .css-r11z79-MuiDataGrid-root, .MuiTab-root,
 .css-levciy-MuiTablePagination-displayedRows{
-  font-size: initial !important;
+  font-size: 13px !important;
 }
 
 .success-message{

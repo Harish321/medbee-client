@@ -203,42 +203,85 @@ export default {
     },
     uiSchema: {
         enteredBy:{
-            "ui:field": "autoCompleter2"
+            "ui:field": "autoCompleter2",
+            "ui:placeholder": "Entered by"
         },
         comments: {
-            "ui:widget": "textarea"
+            "ui:widget": "textarea",
+            "ui:placeholder": "Comments"
         },
         postFallActionsTaken: {
-            "ui:widget": "textarea"
+            "ui:widget": "textarea",
+            "ui:placeholder": "Action taken"
         },
-        
-        // languages: {
-        //   "ui:widget": "select",
-        // },
-        // firstName: {
-        //   "ui:autofocus": true,
-        //   "ui:emptyValue": "",
-        // },
-        // age: {
-        //   "ui:widget": "updown",
-        //   "ui:title": "Age of person",
-        //   "ui:description": "(earthian year)",
-        // },
-        // bio: {
-        //   "ui:widget": "textarea",
-        // },
-        // password: {
-        //   "ui:widget": "password",
-        //   "ui:help": "Hint: Make it strong!",
-        // },
-        // date: {
-        //   "ui:widget": "alt-datetime",
-        // },
-        // telephone: {
-        //   "ui:options": {
-        //     inputType: "tel",
-        //   },
-        // },
+        "facility": {
+            "ui:placeholder": "Facility"
+        },
+        "departmentReportingFall": {
+            "ui:placeholder": "Department reporting fall"
+        },
+        "departmentsInvolved": {
+            "ui:placeholder": "Departments involved"
+        },
+        "eventNo": {
+            "ui:placeholder": "Event number"
+        },
+        "eventDate": {
+        },
+        "locationOfFall": {
+            "ui:placeholder": "Location"
+        },
+        "room": {
+            "ui:placeholder": "Room"
+        },
+        "time": {
+            "ui:placeholder": "Time"
+        },
+        "shift": {
+            "ui:placeholder": "Shift"
+        },
+        "typeOfFall": {
+            "ui:placeholder": "Choose an option"
+        },
+        "contributingFactors": {
+            "ui:placeholder": "Choose an option"
+        },
+        "typeOfInjury": {
+            "ui:placeholder": "Choose an option"
+        },
+        "significance": {
+            "ui:placeholder": "Choose an option"
+        },
+        "physNotified": {
+            "ui:placeholder": "Choose an option"
+        },
+        "notifiedPhysician": {
+            "ui:placeholder": "Physician name"
+        },
+        "newOrderReceived": {
+            "ui:placeholder": "Choose an option"
+        },
+        "interventionInPlacePriorToFall": {
+            "ui:placeholder": "Intervention place"
+        },
+        "medicationList": {
+            "ui:placeholder": "Medication"
+        },
+        "lastFallAssessment": {
+            "ui:placeholder": "Choose an option"
+        },
+        "notifiedPerson": {
+            "ui:placeholder": "Notified to"
+        },
+        "employeeWitnesses": {
+            "ui:placeholder": "Employee witness"
+        },
+        "physicianWitnesses": {
+            "ui:placeholder": "Physician witness"
+        },
+        "otherWitnesses": {
+            "ui:placeholder": "Other witness"
+        },
     },
     formData: {
         formType:"Risk"

@@ -80,35 +80,49 @@ export default {
     },
   },
   uiSchema: {
-    complications: { "ui:widget": "textarea" },
-    comments: { "ui:widget": "textarea" },
-    // languages: {
-    //   "ui:widget": "select",
-    // },
-    // firstName: {
-    //   "ui:autofocus": true,
-    //   "ui:emptyValue": "",
-    // },
-    // age: {
-    //   "ui:widget": "updown",
-    //   "ui:title": "Age of person",
-    //   "ui:description": "(earthian year)",
-    // },
-    // bio: {
-    //   "ui:widget": "textarea",
-    // },
-    // password: {
-    //   "ui:widget": "password",
-    //   "ui:help": "Hint: Make it strong!",
-    // },
-    // date: {
-    //   "ui:widget": "alt-datetime",
-    // },
-    // telephone: {
-    //   "ui:options": {
-    //     inputType: "tel",
-    //   },
-    // },
+    complications: { 
+      "ui:widget": "textarea",
+      "ui:placeholder": "Complications"
+    },
+    comments: { 
+      "ui:widget": "textarea",
+      "ui:placeholder": "Comments"
+    },
+    "enteredBy": {
+      "ui:placeholder": "Entered by"
+    },
+    "departmentsInvolved": {
+      "ui:placeholder": "Departments involved"
+    },
+    "eventDate": {
+    },
+    "eventNo": {
+      "ui:placeholder": "Event number"
+    },
+    "facility": {
+      "ui:placeholder": "Facility"
+    },
+    "shift": {
+      "ui:placeholder": "Shift"
+    },
+    "time": {
+      "ui:placeholder": "Time"
+    },
+    "locationOfEvent": {
+      "ui:placeholder": "Location"
+    },
+    "room": {
+      "ui:placeholder": "Room"
+    },
+    eventType: {
+      "ui:placeholder": "Choose an option"
+    },
+    parameters: {
+      "ui:placeholder": "Choose an option"
+    },
+    delayTime: {
+      "ui:placeholder": "Delay time"
+    },
   },
   formData: {
     formType: "Surgical"
