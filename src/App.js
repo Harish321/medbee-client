@@ -135,7 +135,7 @@ const AutoCompleter2 = (props) => {
     <React.Fragment>
       <Label className="control-label"  {...getInputLabelProps()}>{props.schema.title}</Label>
       <div style={{ width: '100%' }}>
-        <Input className="form-control" style={{ width: '100%' }} onChangeCapture={(event) => console.log(event)} {...getInputProps()} value={props.formData}  />
+        <Input className="form-control" style={{ width: '100%' }} {...getInputProps()} value={props.formData}  />
         {groupedOptions.length > 0 ? (
           <Listbox style={{width:'30%',marginLeft:'5px',marginTop:'3px'}}{...getListboxProps()}>
             {(groupedOptions).map((option, index) => (
