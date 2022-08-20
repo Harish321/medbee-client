@@ -135,7 +135,7 @@ const AutoCompleter2 = (props) => {
     <React.Fragment>
       <Label className="control-label"  {...getInputLabelProps()}>{props.schema.title}</Label>
       <div style={{ width: '100%' }}>
-        <Input className="form-control" style={{ width: '100%' }}  onChangeCapture={(event) => console.log(event)} {...getInputProps()}  />
+        <Input className="form-control" style={{ width: '100%' }} onChangeCapture={(event) => console.log(event)} {...getInputProps()} value={props.formData}  />
         {groupedOptions.length > 0 ? (
           <Listbox style={{width:'30%',marginLeft:'5px',marginTop:'3px'}}{...getListboxProps()}>
             {(groupedOptions).map((option, index) => (
@@ -182,19 +182,20 @@ function App(props) {
   useEffect(() => {
     if(id){
       setSavedFormData(commonStore.allIncidentList.find((incident) => 
-        formData.formType == incident.formType && id == incident.id.substr(3,incident.id.length)
+        formData.formType == incident.formType && id == incident.id
       ))
     }
     setAlert(false)
     return () => {
       id = null
       setSavedFormData({})
-      console.log("cleaned up")
     }
   }, [props])
   
   async function submitForm(formData, schema) {
-    formData.createdAt = new Date().toISOString()
+    formData.lastUpdatedAt = new Date().toISOString()
+    if(!formData.id)
+      formData.createdAt = formData.lastUpdatedAt
     await axios.post(BASE_API_URI + FORM_API_URI + formData.formType, formData)
     setAlert(true)
   }
@@ -202,7 +203,8 @@ function App(props) {
   return (
     <div className="container-fluid" style={style.root}>
       {alert && <div className="success-message">
-        Successfully reported the incident, please visit Dashboard.
+        <div className="main-message"> {formData.formType.toUpperCase()} incident reported Successfully</div>
+        <div className="helper-message"> please visit Dashboard</div>.
       </div>}
       {!alert && <div>
         {(

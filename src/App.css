@@ -57,24 +57,19 @@ form.rjsf fieldset#root .form-control{
 
 .success-message{
   margin-left: 392px;
-  /* display: grid; */
   margin-top: 200px;
-  /* align-items: center; */
-  /* justify-self: center; */
-  /* align-self: center; */
-  /* justify-content: center; */
   font-size: 20px;
   outline-color: green;
-  /* background: green; */
   width: 534px;
-  /* box-shadow: -1px 5px 11px 1px; */
   text-shadow: 0px 0px 1px #beffbe;
+  display: grid;
+  grid-template-columns: 1fr;
+}
+.success-message > .helper-message{
+  color: grey;
+  font-size: 14px;
 }
 
-/* .navigation .MuiButtonBase-root{
-  padding: 5px !important;
-  justify-content: normal !important;
-} */
 
 @keyframes App-logo-spin {
   from {

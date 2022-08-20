@@ -1,4 +1,4 @@
-export const BASE_API_URI = "http://15.207.7.212:3003/"
+export const BASE_API_URI = "http://127.0.1.1:3003/"
 export const FORM_API_URI = "form/"
 export const GET_ALL_INCIDENTS_API = "report/getAllForms"
 
@@ -17,3 +17,4 @@ export const VARIANCE_PAGE_URI = "/varianceSafety"
 export const MEDICATION_PAGE_URI = "/medicationsafety"
 export const SURGICAL_PAGE_URI = "/surgical"
 export const DASHBOARD_PAGE_URI = "/dashboard"
+export const HOME_PAGE_URI = "/"

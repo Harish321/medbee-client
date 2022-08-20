@@ -12,7 +12,7 @@ import { samples } from "./pages"
 import "./index.css"
 
 import { ThemeProvider, createTheme, makeStyles } from '@mui/material/styles';
-import { DASHBOARD_PAGE_URI, MEDICATION_PAGE_URI, RISK_FORM_TYPE, RISK_PAGE_URI, SURGICAL_PAGE_URI, VARIANCE_PAGE_URI } from './Constants/Constants';
+import { HOME_PAGE_URI,DASHBOARD_PAGE_URI, MEDICATION_PAGE_URI, RISK_FORM_TYPE, RISK_PAGE_URI, SURGICAL_PAGE_URI, VARIANCE_PAGE_URI } from './Constants/Constants';
 
 
 const theme = createTheme();
@@ -27,6 +27,7 @@ root.render(
             <BrowserRouter>
                 <PersistentDrawerLeft/>
                 <Routes>
+                    <Route path={HOME_PAGE_URI} element={<Dashboard />}/>
                     <Route path={DASHBOARD_PAGE_URI} element={<Dashboard />}/>
                     <Route path={VARIANCE_PAGE_URI+"/:id"} element={<App formData={samples.VarianceSafteyForm}/>} />
                     <Route path={RISK_PAGE_URI+"/:id"} element={<App formData={samples.RiskForm}/>} />

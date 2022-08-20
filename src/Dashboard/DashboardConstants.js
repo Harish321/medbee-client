@@ -3,14 +3,13 @@ export const DELETE_TEXT = "delete"
 export const DOWNLOAD_TEXT = "download"
 
 export const INCIDNT_TABLE_COLUMNS = [
-    { field: 'id', headerName: 'ID', width: 50 },
+    { field: 'formId', headerName: 'ID', width: 100 },
     { field: 'formType', headerName: 'Report Type', width: 100 },
     { field: 'enteredBy', headerName: 'Entered By', width: 150 },
     { field: 'facility', headerName: 'Facility', width: 100 },
     { field: 'departmentsInvolved', headerName: 'Departments Involved', width: 150 },
-    { field: 'status', headerName: 'Status', width: 100 },
-    { field: 'eventDate', headerName: 'Submitted Date', width: 120 },
-    { field: 'LastSubmittedDate', headerName: 'Last Updated Date', width: 150 },
+    { field: 'createdAt', headerName: 'Submitted Date', width: 120 },
+    { field: 'lastUpdatedAt', headerName: 'Last Updated Date', width: 150 },
   ];
 
   export const INCIDENT_TABLE_ACTION_ICONS = [
