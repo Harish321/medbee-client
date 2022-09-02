@@ -24,6 +24,7 @@ const root = ReactDOM.createRoot(
 root.render(
     <ThemeProvider theme={theme}>
         <Provider store={store}>
+            {/* <SmartLoader></SmartLoader> */}
             <BrowserRouter>
                 <PersistentDrawerLeft/>
                 <Routes>
@@ -41,6 +42,7 @@ root.render(
             </BrowserRouter>
         </Provider>
     </ThemeProvider>);
+
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

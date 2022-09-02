@@ -43,6 +43,7 @@ const Listbox = styled('ul')(({ theme }) => ({
 }))
 
 const AutoCompleter2 = (props) => {
+  const [localValue, setLocalValue] = useState(props.formData)
   const data = [
     {
         "label": "The Shawshank Redemption",
@@ -115,6 +116,9 @@ const AutoCompleter2 = (props) => {
         "value": "Interstellar"
     }
 ]
+useEffect(()=>{
+  setLocalValue(props.formData)
+},[props.formData])
   const {
     getRootProps,
     getInputLabelProps,
@@ -122,24 +126,26 @@ const AutoCompleter2 = (props) => {
     getListboxProps,
     getOptionProps,
     groupedOptions,
+    value,inputValue
   } = useAutocomplete({
+    inputValue: localValue || "",
+    value:props.formData || "",
     id: 'use-autocomplete-demo',
     options: data,
     isOptionEqualToValue:(o,value)=>{
       return true
     },
-    getOptionLabel: (option) => option.label,
+    getOptionLabel: (option) => option.value,
   })
-
   return (
     <React.Fragment>
       <Label className="control-label"  {...getInputLabelProps()}>{props.schema.title}</Label>
       <div style={{ width: '100%' }}>
-        <Input className="form-control" style={{ width: '100%' }} {...getInputProps()} value={props.formData}  />
+        <Input className="form-control" style={{ width: '100%' }}  {...getInputProps()} onChange={(event) => setLocalValue(event.target.value)}  />
         {groupedOptions.length > 0 ? (
-          <Listbox style={{width:'30%',marginLeft:'5px',marginTop:'3px'}}{...getListboxProps()}>
+          <Listbox style={{width:'30%',marginLeft:'5px',marginTop:'3px'}}{...getListboxProps() }>
             {(groupedOptions).map((option, index) => (
-              <li onClickCapture={(event)=> props.onChange(event.target.innerText)} style={{padding:'4px'}} {...getOptionProps({ option, index })}>{option.label}</li>
+              <li onClickCapture={(event) => props.onChange(event.target.innerText)} style={{padding:'4px'}} {...getOptionProps({ option, index })}>{option.label}</li>
             ))}
           </Listbox>
         ) : null}
@@ -160,11 +166,6 @@ function App(props) {
   const { schema, uiSchema, formData, validate, readonly } = props.formData
   const [savedFormData, setSavedFormData] = useState({})
 
-  let commonStore = store.getState().commonStore
-  store.subscribe(function(){
-    commonStore = store.getState().commonStore
-  })
-
   const style = {
     root: {
       paddingBottom: "2px"
@@ -180,15 +181,12 @@ function App(props) {
   // }, [])
 
   useEffect(() => {
-    if(id){
-      setSavedFormData(commonStore.allIncidentList.find((incident) => 
-        formData.formType == incident.formType && id == incident.id
-      ))
-    }
     setAlert(false)
-    return () => {
-      id = null
-      setSavedFormData({})
+    setSavedFormData({})
+    if(id){
+      axios.get(BASE_API_URI + FORM_API_URI + formData.formType+`/${id}`).then((response)=>{
+          setSavedFormData(response.data)
+      })
     }
   }, [props])
   

@@ -6,13 +6,18 @@ import ActionIcon from "../Components/ActionIcon";
 import { INCIDENT_TABLE_ACTION_ICONS, INCIDNT_TABLE_COLUMNS } from "./DashboardConstants";
 import { EDIT_TEXT, DELETE_TEXT, DOWNLOAD_TEXT } from "./DashboardConstants";
 import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 export default function Dashboard(props){
     let navigate = useNavigate();
-    const handleIncidentActionCellClick = (params, event, details) => {
+    const [tableData,setTableData] = useState([]);
+    const handleIncidentActionCellClick = async (params, event, details) => {
         switch(event.target.innerText){
             case EDIT_TEXT: navigateToEditIncidentScreen(params, navigate); break;
-            case DELETE_TEXT: {deleteIncident(params,navigate)}; break;
+            case DELETE_TEXT: {
+                await deleteIncident(params,navigate); 
+                setTableData(await getIncidentReportData())
+            }; break;
             case DOWNLOAD_TEXT: navigateToEditIncidentScreen(params, event, details); break;
         }
     }
@@ -52,6 +57,12 @@ export default function Dashboard(props){
             lastReported: "2022-07-12 12:00:00 AM"
         }
     ]
+    useEffect(()=>{
+        getIncidentReportData().then((data)=>{
+            console.log(data);
+            setTableData(data);
+        })
+    },[])
     
     return (
         <div style={style.root}>
@@ -63,7 +74,7 @@ export default function Dashboard(props){
             <div style={style.reporttable}>
                 <FullWidthTabs title={"Incident Reports"}>
                     <Table
-                        action={getIncidentReportData} 
+                        data={tableData}
                         columns={[...INCIDNT_TABLE_COLUMNS, {
                             field: 'actions',
                             headerName: '',
