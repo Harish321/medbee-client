@@ -46,74 +46,24 @@ const AutoCompleter2 = (props) => {
   const [localValue, setLocalValue] = useState(props.formData)
   const data = [
     {
-        "label": "The Shawshank Redemption",
-        "year": 1994,
-        "value": "The Shawshank Redemption"
+      label: "Harish",
+      value: "Harish"
     },
     {
-        "label": "The Godfather",
-        "year": 1972,
-        "value": "The Godfather"
+      label: "Jhon",
+      value: "Jhon"
     },
     {
-        "label": "City of God",
-        "year": 2002,
-        "value": "City of God"
+      label: "Peter",
+      value: "Peter"
     },
     {
-        "label": "Se7en",
-        "year": 1995,
-        "value": "Se7en"
+      label:"Lisa",
+      value: "Lisa"
     },
     {
-        "label": "The Silence of the Lambs",
-        "year": 1991,
-        "value": "The Silence of the Lambs"
-    },
-    {
-        "label": "It's a Wonderful Life",
-        "year": 1946,
-        "value": "It's a Wonderful Life"
-    },
-    {
-        "label": "Life Is Beautiful",
-        "year": 1997,
-        "value": "Life Is Beautiful"
-    },
-    {
-        "label": "The Usual Suspects",
-        "year": 1995,
-        "value": "The Usual Suspects"
-    },
-    {
-        "label": "Léon: The Professional",
-        "year": 1994,
-        "value": "Léon: The Professional"
-    },
-    {
-        "label": "Spirited Away",
-        "year": 2001,
-        "value": "Spirited Away"
-    },
-    {
-        "label": "Saving Private Ryan",
-        "year": 1998,
-        "value": "Saving Private Ryan"
-    },
-    {
-        "label": "Once Upon a Time in the West",
-        "year": 1968,
-        "value": "Once Upon a Time in the West"
-    },
-    {
-        "label": "American History X",
-        "year": 1998,
-        "value": "American History X"
-    },
-    {
-        "label": "Interstellar",
-        "year": 2014,
-        "value": "Interstellar"
+      label:"Alex",
+      value:"Alex"
     }
 ]
 useEffect(()=>{
