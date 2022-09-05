@@ -1,6 +1,6 @@
 import Axios from "axios"
 import store from '../store'
-import { BASE_API_URI, DASHBOARD_PAGE_URI, GET_ALL_INCIDENTS_API, HOME_PAGE_URI, MEDICATION_FORM_TYPE, MEDICATION_PAGE_URI, RISK_FORM_TYPE, RISK_PAGE_URI, SURGICAL_FORM_TYPE, SURGICAL_PAGE_URI, VARIANCE_FORM_TYPE, VARIANCE_PAGE_URI } from "../Constants/Constants";
+import { BASE_API_URI, DASHBOARD_PAGE_URI, FORM_API_URI, GET_ALL_INCIDENTS_API, HOME_PAGE_URI, MEDICATION_FORM_TYPE, MEDICATION_PAGE_URI, REPORT_COUNT_API, RISK_FORM_TYPE, RISK_PAGE_URI, SURGICAL_FORM_TYPE, SURGICAL_PAGE_URI, VARIANCE_FORM_TYPE, VARIANCE_PAGE_URI } from "../Constants/Constants";
 import { commonActions } from "../store/CommonStore";
 
 const dispatch = store.dispatch
@@ -35,7 +35,13 @@ export const navigateToEditIncidentScreen = (params, navigate) => {
     }
 }
 export const deleteIncident = (params,navigate) =>{
-    return Axios.delete(BASE_API_URI+`form/${params.row.formType}/${params.row.id}`).then(()=>{
+    return Axios.delete(BASE_API_URI+`${FORM_API_URI}${params.row.formType}/${params.row.id}`).then(()=>{
         navigate(HOME_PAGE_URI);
+    })
+}
+
+export const getReportCount = (props) =>{
+    Axios.get(BASE_API_URI+REPORT_COUNT_API).then((response)=>{
+        props.setReportAggregateData(response.data)
     })
 }

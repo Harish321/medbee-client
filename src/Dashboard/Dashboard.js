@@ -1,16 +1,18 @@
 import Table from "../Components/Table/Table";
 import FullWidthTabs from "../Components/tabs/FullWidthTabs";
 import ReportTile from "../Components/Tile/ReportTile"
-import { deleteIncident, getIncidentReportData, navigateToEditIncidentScreen } from "./DashboardActions";
+import { deleteIncident, getIncidentReportData, getReportCount, navigateToEditIncidentScreen } from "./DashboardActions";
 import ActionIcon from "../Components/ActionIcon";
 import { INCIDENT_TABLE_ACTION_ICONS, INCIDNT_TABLE_COLUMNS } from "./DashboardConstants";
 import { EDIT_TEXT, DELETE_TEXT, DOWNLOAD_TEXT } from "./DashboardConstants";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
+// import ExportExcel from "../Components/ExportExcel"
 
 export default function Dashboard(props){
     let navigate = useNavigate();
     const [tableData,setTableData] = useState([]);
+    const [reportAggregateData, setReportAggregateData] = useState([]);
     const handleIncidentActionCellClick = async (params, event, details) => {
         switch(event.target.innerText){
             case EDIT_TEXT: navigateToEditIncidentScreen(params, navigate); break;
@@ -35,33 +37,12 @@ export default function Dashboard(props){
         reporttable: {}
     }
 
-    const reportAggregateData = [
-        {
-            reportType: "Variance Safety",
-            count: 3,
-            lastReported: "2022-07-12 12:00:00 AM"
-        },
-        {
-            reportType: "Risk",
-            count: 0,
-            lastReported: "2022-07-12 12:00:00 AM"
-        },
-        {
-            reportType: "Medication Safety",
-            count: 9,
-            lastReported: "2022-07-12 12:00:00 AM"
-        },
-        {
-            reportType: "Surgical",
-            count: 50,
-            lastReported: "2022-07-12 12:00:00 AM"
-        }
-    ]
     useEffect(()=>{
         getIncidentReportData().then((data)=>{
             console.log(data);
             setTableData(data);
         })
+        getReportCount({setReportAggregateData:setReportAggregateData})
     },[])
     
     return (
@@ -92,7 +73,8 @@ export default function Dashboard(props){
                           }]}
                         pageSize={10}
                         rowsPerPageOptions={[5]}
-                        onCellClick={handleIncidentActionCellClick}/>    
+                        onCellClick={handleIncidentActionCellClick}/>
+                        {/* ExportExcel={ExportExcel}/>     */}
                 </FullWidthTabs>
             </div>
         </div>
